@@ -1,0 +1,40 @@
+#Samantha Hieber
+
+def main():
+    list_names = ask_names()
+    print_names(list_names)
+    print(" ")
+    sort_names(list_names)
+    print_names(list_names)
+    search_names(list_names)
+    
+def ask_names():
+    infile = open("names.txt", "r")
+    names = infile.readlines()
+    infile.close()
+    
+    index = 0
+    
+    while index < len(names): 
+        names[index] = names[index].rstrip('\n')
+        index += 1
+        
+    return names
+    
+def print_names(names):
+    for name in names:
+        print(name)
+        
+def sort_names(names):
+    names.sort()
+    return names
+        
+def search_names(names):
+    search = input("What do you want me to search for? ")
+    
+    if search in names: 
+        print(search, "is found in", names.index(search) + 1)
+    else:
+        print(search, "is not found")
+        
+main()
